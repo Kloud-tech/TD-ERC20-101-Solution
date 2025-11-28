@@ -6,9 +6,7 @@ import {console} from "forge-std/console.sol";
 
 interface IEvaluator {
     function ex1_getTickerAndSupply() external;
-    function readTicker(
-        address studentAddress
-    ) external view returns (string memory);
+    function readTicker(address studentAddress) external view returns (string memory);
     function readSupply(address studentAddress) external view returns (uint256);
 }
 
@@ -25,9 +23,7 @@ contract GetAssignedValues is Script {
         console.log("Calling ex1_getTickerAndSupply...");
         IEvaluator(evaluator).ex1_getTickerAndSupply();
 
-        string memory ticker = IEvaluator(evaluator).readTicker(
-            deployerAddress
-        );
+        string memory ticker = IEvaluator(evaluator).readTicker(deployerAddress);
         uint256 supply = IEvaluator(evaluator).readSupply(deployerAddress);
 
         console.log("Assigned Ticker:", ticker);

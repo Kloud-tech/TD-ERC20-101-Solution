@@ -18,20 +18,15 @@ contract DynamicERC20 is ERC20, Ownable, IExerciceSolution {
 
     string private _symbol;
 
-    constructor(
-        uint256 initialSupply,
-        string memory tokenSymbol
-    ) ERC20("DynamicERC20", tokenSymbol) Ownable(msg.sender) {
+    constructor(uint256 initialSupply, string memory tokenSymbol)
+        ERC20("DynamicERC20", tokenSymbol)
+        Ownable(msg.sender)
+    {
         _symbol = tokenSymbol;
         _mint(msg.sender, initialSupply);
     }
 
-    function symbol()
-        public
-        view
-        override(ERC20, IExerciceSolution)
-        returns (string memory)
-    {
+    function symbol() public view override(ERC20, IExerciceSolution) returns (string memory) {
         return _symbol;
     }
 
@@ -63,15 +58,11 @@ contract DynamicERC20 is ERC20, Ownable, IExerciceSolution {
         return true;
     }
 
-    function isCustomerWhiteListed(
-        address customerAddress
-    ) external view override returns (bool) {
+    function isCustomerWhiteListed(address customerAddress) external view override returns (bool) {
         return whitelist[customerAddress];
     }
 
-    function customerTierLevel(
-        address customerAddress
-    ) external view override returns (uint256) {
+    function customerTierLevel(address customerAddress) external view override returns (uint256) {
         return tierLevel[customerAddress];
     }
 

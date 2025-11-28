@@ -16,9 +16,7 @@ interface IEvaluator {
     function ex7_testDenyListing() external;
     function ex8_testTier1Listing() external;
     function ex9_testTier2Listing() external;
-    function readTicker(
-        address studentAddress
-    ) external view returns (string memory);
+    function readTicker(address studentAddress) external view returns (string memory);
     function readSupply(address studentAddress) external view returns (uint256);
 }
 
@@ -29,8 +27,7 @@ import {DynamicERC20} from "./DynamicERC20.sol";
  * This contract completes the entire workshop programmatically in a single transaction
  */
 contract AllInOneSolution is IAllInOneSolution {
-    address public constant EVALUATOR =
-        0x05A644d6d9BBd85861ff927245aaC13bd56e6d57;
+    address public constant EVALUATOR = 0x05A644d6d9BBd85861ff927245aaC13bd56e6d57;
     DynamicERC20 public deployedToken;
 
     /**

@@ -14,18 +14,11 @@ contract MonERC20 is ERC20, Ownable, IExerciceSolution {
     uint256 public constant TOKEN_PRICE = 1000;
     uint256 public constant PRICE_DENOMINATOR = 0.0001 ether;
 
-    constructor(
-        uint256 initialSupply
-    ) ERC20("MonERC20", "giw4o5i") Ownable(msg.sender) {
+    constructor(uint256 initialSupply) ERC20("MonERC20", "giw4o5i") Ownable(msg.sender) {
         _mint(msg.sender, initialSupply);
     }
 
-    function symbol()
-        public
-        view
-        override(ERC20, IExerciceSolution)
-        returns (string memory)
-    {
+    function symbol() public view override(ERC20, IExerciceSolution) returns (string memory) {
         return super.symbol();
     }
 
@@ -86,18 +79,14 @@ contract MonERC20 is ERC20, Ownable, IExerciceSolution {
     /**
      * @dev Check if a customer is whitelisted
      */
-    function isCustomerWhiteListed(
-        address customerAddress
-    ) external view override returns (bool) {
+    function isCustomerWhiteListed(address customerAddress) external view override returns (bool) {
         return whitelist[customerAddress];
     }
 
     /**
      * @dev Get customer tier level
      */
-    function customerTierLevel(
-        address customerAddress
-    ) external view override returns (uint256) {
+    function customerTierLevel(address customerAddress) external view override returns (uint256) {
         return tierLevel[customerAddress];
     }
 
